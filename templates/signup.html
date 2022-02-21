@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Fake News Detection</title>
+  </head>
+  <body class="bg-gray-200">
+    <header class="text-gray-600 body-font -my-8">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-brown-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Fake News Detection</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="./" class="mr-5 hover:text-gray-900">Home</a>
+            <a href="javascript: void(0)" onclick="openPrediction()" class="mr-5 hover:text-gray-900">Prediction</a>
+            <a href="./contact" class="mr-5 hover:text-gray-900">Contact us</a>
+            <a href="javascript: void(0)" onclick="openRegister()" class="mr-5 hover:text-gray-900">Register</a>
+            <a href="javascript: void(0)" onclick="openSignup()" class="mr-5 hover:text-gray-900">Signup</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="register" id = "RegBox" style= "display: none">
+        <h2>Register</h2>
+        <div class="register_form">
+            <div class="container">
+                <label>Fullname:</label>
+                <input type="text" placeholder="Enter fullname" name="name" id ="name"  required>
+                <label>Age:</label>
+                <input type="number" placeholder="Enter your age" name="age" id="age"   required> <br/><br/>
+                <label>Gender:</label>
+                <input type="radio" name="gender" value="MALE">MALE
+                <input type="radio" name="gender"  value="FEMALE">FEMALE
+                <input type="radio" name="gender" value="OTHERS">OTHERS<br/><br/>
+                <label>Email Id:</label>
+                <input type="text" name="email" placeholder="Email"  id= "email" required>
+                <label>Username:</label>
+                <input type="text" placeholder="Enter Username" name="username"  id="Username" required>  
+                <label>Password : </label>   
+                <input type="password" placeholder="Enter Password" name="password"  id="Password" required>
+                <label>Retype password : </label>   
+                <input type="password" placeholder="Enter Password again" name="password"  required>     
+                <div class="container_box">
+                  <button id="regBut">Register</button>
+                </div>
+            </div>
+          </div>
+        </div> 
+
+          <div class="center" id="SignBox" style= "display: none">
+            <h1><b>SIGNUP</h1></b>
+            <div method="post">
+                  <div class="txt_field">
+                    <span>Username</span>
+                    <label></label>
+                    <input type="text" id = "username" required>
+                    
+                    
+                  </div>
+                  <div class="txt_field">
+                    <span>Password</span>
+                    <label></label>
+                    <input type="password" id = "password" required>
+                    
+                  </div>
+                  <label id="output"></label>
+                  <input type="submit" id="signBut" value="Login">
+            </div>
+          </div>
+
+
+
+      <section class="text-gray-600 body-font -my-8" id="PredBox" >
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-20">
+            <h2 class="text-xs text-green-500 tracking-widest font-medium title-font mb-1">Machine learning project</h2>
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Fake News Detection</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">These days fake news is creating different issues from sarcastic articles to a fabricated news and plan government propaganda in some outlets. Fake news and lack of trust in the media are growing problems with huge ramifications in our society. Obviously, a purposely misleading story is “fake news “  but lately blathering social media’s discourse is changing its definition. Some of them now use the term to dismiss the facts counter to their preferred viewpoints.</p>
+            <br><p class="text-primary" id = "display"><b><b>{{prediction_text}}</b></b></p>
+          </div>
+          <div class="pred">
+            <!--form action="./predict" method="POST"-->
+                <div class="mb-3">
+                  <label class="form-label">Enter news headlines</label>
+                  <input type="text" class="form-control" id="TEXT" name="news">
+                </div>
+                <button type="submit" id= "button" class="btn btn-primary">Submit</button>
+              <!--/form-->
+          </div>
+        </div>
+      </section>
+      <script src="{{ url_for('static', filename='index.js')}}"></script>
+      <script>openSignup()</script>
+  </body>
+</html>
