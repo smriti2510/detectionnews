@@ -291,7 +291,7 @@ import itertools
 import numpy as np
 
 app = Flask(__name__)
-conn = sqlite3.connect("test.db",check_same_thread = False)
+conn = sqlite3.connect("C:\Users\dell\OneDrive\Desktop\Final Year Project Code\static\test.db",check_same_thread = False)
 app.config['CORS_HEADERS'] = 'Content-Type'
 load_model = pickle.load(open('final_model.sav', 'rb'))
 var1= False
